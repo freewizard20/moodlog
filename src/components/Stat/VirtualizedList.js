@@ -132,7 +132,7 @@ export default function VirtualizedList() {
         <FixedSizeList
           height={400}
           width={300}
-          itemSize={80}
+          itemSize={90}
           itemCount={moodData.length}
         >
           {renderRow}
