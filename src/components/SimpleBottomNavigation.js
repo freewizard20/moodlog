@@ -24,8 +24,8 @@ export default function SimpleBottomNavigation() {
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction label="Log" href="/" />
-      <BottomNavigationAction label="Stats" href="/stat" />
+      <BottomNavigationAction component={Link} to="/" label="Log" />
+      <BottomNavigationAction component={Link} to="/stat" label="Stats" />
     </BottomNavigation>
   );
 }
