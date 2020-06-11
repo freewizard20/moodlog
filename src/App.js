@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Log from "./components/Log/Log";
 import Stat from "./components/Stat/Stat";
@@ -10,10 +10,12 @@ import ButtonAppBar from "./components/Nav/ButtonAppBar";
 const today = new Date().toDateString();
 
 function App() {
+  const [value, setValue] = useState("");
+
   return (
     <Router>
       <div className="App">
-        {/* <LoginScreen /> */}
+        <LoginScreen />
         <ButtonAppBar />
         <h3>{today}</h3>
         <Switch>
