@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import { useDispatch } from "react-redux";
+import { logout } from "../../actions/loginActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -19,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+  const logoutHandler = () => {
+    console.log("logout");
+    dispatch(logout());
+  };
 
   return (
     <div className={classes.root}>
@@ -35,7 +43,9 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Mood Log
           </Typography>
-          <Button color="inherit">Log out</Button>
+          <Button color="inherit" onClick={logoutHandler}>
+            Log out
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
