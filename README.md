@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e75cf473-df06-4094-8497-fb90aa2f8f73/deploy-status)](https://app.netlify.com/sites/mood-fw/deploys)
+
 In the project directory, you can run:
 
 ### `npm start`
