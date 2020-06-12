@@ -47,6 +47,7 @@ export default function Log() {
           mood: mood,
           description: description,
           timestamp: Date.now(),
+          id: "okjinhyuk",
         })
         .then(function (docRef) {
           console.log("Document written with ID: ", docRef.id);

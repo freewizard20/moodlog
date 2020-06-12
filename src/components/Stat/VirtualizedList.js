@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
     backgroundColor: theme.palette.background.paper,
   },
+  satisfied: {
+    color: "green",
+  },
 }));
 
 function renderRow(props) {
@@ -35,7 +38,7 @@ function renderRow(props) {
         <ListItem button style={style} key={index}>
           <ListItemAvatar>
             <Avatar>
-              <SentimentSatisfiedAltIcon />
+              <SentimentSatisfiedAltIcon color="primary" />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
@@ -63,7 +66,7 @@ function renderRow(props) {
         <ListItem button style={style} key={index}>
           <ListItemAvatar>
             <Avatar>
-              <SentimentVeryDissatisfiedIcon />
+              <SentimentVeryDissatisfiedIcon color="secondary" />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
