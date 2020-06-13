@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import "react-calendar/dist/Calendar.css";
 import VirtualizedList from "./VirtualizedList";
+import SimpleBottomNavigation from "../Nav/SimpleBottomNavigation";
 
 const useStyles = makeStyles({
   root: {
@@ -40,10 +41,13 @@ export default function Stat() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardContent className={classes.content}>
-        <VirtualizedList />
-      </CardContent>
-    </Card>
+    <>
+      <Card className={classes.root}>
+        <CardContent className={classes.content}>
+          <VirtualizedList />
+        </CardContent>
+      </Card>
+      <SimpleBottomNavigation />
+    </>
   );
 }

@@ -8,6 +8,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import firebase from "../../firebase";
+import SimpleBottomNavigation from "../Nav/SimpleBottomNavigation";
 
 const db = firebase.firestore();
 
@@ -61,63 +62,66 @@ export default function Log() {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Today's Mood
-        </Typography>
-        <ButtonGroup
-          variant="contained"
-          color="primary"
-          aria-label="contained primary button group"
-          className={classes.buttongroup}
-        >
-          <Button
-            color={mood === 0 ? "secondary" : "primary"}
-            onClick={() => handleClick(0)}
+    <>
+      <Card className={classes.root}>
+        <CardContent>
+          <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
           >
-            Good
-          </Button>
-          <Button
-            color={mood === 1 ? "secondary" : "primary"}
-            onClick={() => handleClick(1)}
+            Today's Mood
+          </Typography>
+          <ButtonGroup
+            variant="contained"
+            color="primary"
+            aria-label="contained primary button group"
+            className={classes.buttongroup}
           >
-            Soso
-          </Button>
-          <Button
-            color={mood === 2 ? "secondary" : "primary"}
-            onClick={() => handleClick(2)}
+            <Button
+              color={mood === 0 ? "secondary" : "primary"}
+              onClick={() => handleClick(0)}
+            >
+              Good
+            </Button>
+            <Button
+              color={mood === 1 ? "secondary" : "primary"}
+              onClick={() => handleClick(1)}
+            >
+              Soso
+            </Button>
+            <Button
+              color={mood === 2 ? "secondary" : "primary"}
+              onClick={() => handleClick(2)}
+            >
+              Angry
+            </Button>
+          </ButtonGroup>
+          <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
           >
-            Angry
+            Description
+          </Typography>
+          <TextField
+            id="outlined-multiline-static"
+            label="Text"
+            multiline
+            rows={4}
+            placeholder="Write Here"
+            variant="outlined"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </CardContent>
+        <CardActions className={classes.submit}>
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
+            Submit
           </Button>
-        </ButtonGroup>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Description
-        </Typography>
-        <TextField
-          id="outlined-multiline-static"
-          label="Text"
-          multiline
-          rows={4}
-          placeholder="Write Here"
-          variant="outlined"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </CardContent>
-      <CardActions className={classes.submit}>
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Submit
-        </Button>
-      </CardActions>
-    </Card>
+        </CardActions>
+      </Card>
+      <SimpleBottomNavigation />
+    </>
   );
 }

@@ -6,7 +6,7 @@ import LoginScreen from "./components/Login/LoginScreen";
 import SimpleBottomNavigation from "./components/Nav/SimpleBottomNavigation";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ButtonAppBar from "./components/Nav/ButtonAppBar";
-
+import SignIn from "./components/Login/SignIn";
 const today = new Date().toDateString();
 
 function App() {
@@ -21,8 +21,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Log} />
           <Route path="/stat" exact component={Stat} />
+          <Route path="/login" exact component={SignIn} />
         </Switch>
-        <SimpleBottomNavigation />
       </div>
     </Router>
   );
