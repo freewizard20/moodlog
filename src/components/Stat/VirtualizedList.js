@@ -92,6 +92,7 @@ export default function VirtualizedList() {
 
   useEffect(() => {
     db.collection("mood")
+      .where("email", "==", "okjinhyuk93@gmail.com")
       .orderBy("timestamp", "desc")
       .limit(30)
       .get()

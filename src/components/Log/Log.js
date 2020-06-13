@@ -34,6 +34,7 @@ export default function Log() {
   const classes = useStyles();
   const [mood, setMood] = useState(-1);
   const [description, setDescription] = useState("");
+  const today = new Date().toDateString();
 
   const handleClick = (which) => {
     setMood(which);
@@ -63,6 +64,7 @@ export default function Log() {
 
   return (
     <>
+      <h3>{today}</h3>
       <Card className={classes.root}>
         <CardContent>
           <Typography

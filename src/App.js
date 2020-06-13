@@ -7,7 +7,7 @@ import SimpleBottomNavigation from "./components/Nav/SimpleBottomNavigation";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ButtonAppBar from "./components/Nav/ButtonAppBar";
 import SignIn from "./components/Login/SignIn";
-const today = new Date().toDateString();
+import SignUp from "./components/Login/SignUp";
 
 function App() {
   const [value, setValue] = useState("");
@@ -17,11 +17,11 @@ function App() {
       <div className="App">
         <LoginScreen />
         <ButtonAppBar />
-        <h3>{today}</h3>
         <Switch>
           <Route path="/" exact component={Log} />
           <Route path="/stat" exact component={Stat} />
           <Route path="/login" exact component={SignIn} />
+          <Route path="/register" exact component={SignUp} />
         </Switch>
       </div>
     </Router>
