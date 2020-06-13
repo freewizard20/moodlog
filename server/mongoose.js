@@ -5,12 +5,11 @@ const name = "Jinhyuk Jeon";
 const email = "okjinhyuk@naver.com";
 const password = "s90909";
 
-function post(index) {
+function post() {
   const user = new User({
-    name: `${name} ${index}`,
+    name,
     email,
     password,
-    index,
   });
   user
     .save()
@@ -29,8 +28,8 @@ function getOne(name) {
 }
 
 // empty list or filled
-function deleteOne(index) {
-  User.remove({ index: 100 }).then((data) => {
+function deleteOne() {
+  User.remove({ name: "Jinhyuk Jeon" }).then((data) => {
     console.log(data);
   });
 }
@@ -49,4 +48,6 @@ mongoose.connect(
   }
 );
 
-getOne("Sam Hamington");
+post();
+// getOne("Sam Hamington");
+// deleteOne();

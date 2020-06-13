@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useDispatch } from "react-redux";
 import { logout } from "../../actions/loginActions";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -41,8 +42,10 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Mood Log
+            <Link to="/">Mood Log</Link>
           </Typography>
+          <Link to="/signin">Sign In</Link>
+          <Link to="/signup">Sign Up</Link>
           <Button color="inherit" onClick={logoutHandler}>
             Log out
           </Button>

@@ -20,8 +20,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Log} />
           <Route path="/stat" exact component={Stat} />
-          <Route path="/login" exact component={SignIn} />
-          <Route path="/register" exact component={SignUp} />
+          <Route path="/signin" exact component={SignIn} />
+          <Route path="/signup" exact component={SignUp} />
         </Switch>
       </div>
     </Router>

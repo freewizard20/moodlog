@@ -59,17 +59,22 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          noValidate
+          action="http://localhost:8080/register"
+          method="post"
+        >
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
                 autoComplete="name"
-                name="Name"
+                name="name"
                 variant="outlined"
                 required
                 fullWidth
-                id="Name"
-                label="Name"
+                id="name"
+                label="name"
                 autoFocus
               />
             </Grid>
@@ -114,7 +119,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link to="/login" variant="body2">
+              <Link to="/signin" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

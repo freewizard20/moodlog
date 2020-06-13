@@ -58,7 +58,12 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          noValidate
+          action="http://localhost:8080/login"
+          method="post"
+        >
           <TextField
             variant="outlined"
             margin="normal"
@@ -101,7 +106,7 @@ export default function SignIn() {
               </Link> */}
             </Grid>
             <Grid item>
-              <Link to="/register" variant="body2">
+              <Link to="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
