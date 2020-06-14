@@ -8,9 +8,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ButtonAppBar from "./components/Nav/ButtonAppBar";
 import SignIn from "./components/Login/SignIn";
 import SignUp from "./components/Login/SignUp";
+import Cookie from "universal-cookie";
 
 function App() {
   const [value, setValue] = useState("");
+  const cookies = new Cookie();
 
   return (
     <Router>

@@ -47,11 +47,12 @@ app.post("/register", (req, res) => {
           res.send("written to db");
         })
         .catch(() => {
-          console.log("error");
+          console.log("db save error");
           res.send("database write error");
         });
     } else {
       console.log("duplicate address");
+      res.send({ email: "duplicate" });
     }
   });
 });
