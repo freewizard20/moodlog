@@ -12,7 +12,6 @@ import Cookie from "universal-cookie";
 
 function App() {
   const [value, setValue] = useState("");
-  const cookies = new Cookie();
 
   return (
     <Router>

@@ -28,7 +28,10 @@ export default function ButtonAppBar() {
   const dispatch = useDispatch();
 
   let loggedIn = false;
-  if (cookies.get("isLoggedIn") == "false") {
+  if (
+    cookies.get("isLoggedIn") == "false" ||
+    cookies.get("isLoggedIn") === undefined
+  ) {
     loggedIn = false;
   } else {
     loggedIn = true;
@@ -65,7 +68,8 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            {cookies.get("isLoggedIn") === "false"
+            {cookies.get("isLoggedIn") === "false" ||
+            cookies.get("isLoggedIn") === undefined
               ? "Mood Log"
               : cookies.get("email")}
           </Typography>

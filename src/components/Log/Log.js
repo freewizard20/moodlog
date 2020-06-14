@@ -122,9 +122,20 @@ export default function Log() {
           />
         </CardContent>
         <CardActions className={classes.submit}>
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
-            Submit
-          </Button>
+          {email === undefined ? (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSubmit}
+              disabled
+            >
+              Submit
+            </Button>
+          ) : (
+            <Button variant="contained" color="primary" onClick={handleSubmit}>
+              Submit
+            </Button>
+          )}
         </CardActions>
       </Card>
       <SimpleBottomNavigation />

@@ -91,8 +91,8 @@ export default function VirtualizedList() {
   const [didrender, setDidrender] = useState(0);
   const classes = useStyles();
   const cookies = new Cookie();
-  const email = cookies.get("email");
-
+  let email = cookies.get("email");
+  if (email === undefined) email = "";
   useEffect(() => {
     moodData = [];
     db.collection("mood")
