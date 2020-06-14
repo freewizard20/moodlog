@@ -6,23 +6,25 @@ import LoginScreen from "./components/Login/LoginScreen";
 import SimpleBottomNavigation from "./components/Nav/SimpleBottomNavigation";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ButtonAppBar from "./components/Nav/ButtonAppBar";
-
-const today = new Date().toDateString();
+import SignIn from "./components/Login/SignIn";
+import SignUp from "./components/Login/SignUp";
+import Cookie from "universal-cookie";
 
 function App() {
   const [value, setValue] = useState("");
+  const cookies = new Cookie();
 
   return (
     <Router>
       <div className="App">
-        <LoginScreen />
+        {/* <LoginScreen /> */}
         <ButtonAppBar />
-        <h3>{today}</h3>
         <Switch>
           <Route path="/" exact component={Log} />
           <Route path="/stat" exact component={Stat} />
+          <Route path="/signin" exact component={SignIn} />
+          <Route path="/signup" exact component={SignUp} />
         </Switch>
-        <SimpleBottomNavigation />
       </div>
     </Router>
   );

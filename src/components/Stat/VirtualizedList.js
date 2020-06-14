@@ -10,10 +10,11 @@ import SentimentDissatisfiedIcon from "@material-ui/icons/SentimentDissatisfied"
 import SentimentSatisfiedAltIcon from "@material-ui/icons/SentimentSatisfiedAlt";
 import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 import firebase from "../../firebase";
+import Cookie from "universal-cookie";
 
 const db = firebase.firestore();
 
-const moodData = [];
+let moodData = [];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,17 +88,21 @@ renderRow.propTypes = {
 };
 
 export default function VirtualizedList() {
-  const [didrender, setDidrender] = useState();
+  const [didrender, setDidrender] = useState(0);
   const classes = useStyles();
+  const cookies = new Cookie();
+  const email = cookies.get("email");
 
   useEffect(() => {
+    moodData = [];
     db.collection("mood")
+      .where("email", "==", email)
       .orderBy("timestamp", "desc")
       .limit(30)
       .get()
       .then(function (querySnapShot) {
         querySnapShot.forEach(function (doc) {
-          console.log(doc.id, " // ", doc.data());
+          // console.log(doc.id, " // ", doc.data());
           const obj = {
             id: doc.id,
             timestamp: doc.data().timestamp,

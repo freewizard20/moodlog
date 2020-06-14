@@ -8,6 +8,8 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import firebase from "../../firebase";
+import SimpleBottomNavigation from "../Nav/SimpleBottomNavigation";
+import Cookie from "universal-cookie";
 
 const db = firebase.firestore();
 
@@ -33,6 +35,10 @@ export default function Log() {
   const classes = useStyles();
   const [mood, setMood] = useState(-1);
   const [description, setDescription] = useState("");
+  const today = new Date().toDateString();
+  const cookies = new Cookie();
+
+  const email = cookies.get("email");
 
   const handleClick = (which) => {
     setMood(which);
@@ -47,7 +53,7 @@ export default function Log() {
           mood: mood,
           description: description,
           timestamp: Date.now(),
-          id: "okjinhyuk",
+          email: email,
         })
         .then(function (docRef) {
           console.log("Document written with ID: ", docRef.id);
@@ -61,63 +67,67 @@ export default function Log() {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Today's Mood
-        </Typography>
-        <ButtonGroup
-          variant="contained"
-          color="primary"
-          aria-label="contained primary button group"
-          className={classes.buttongroup}
-        >
-          <Button
-            color={mood === 0 ? "secondary" : "primary"}
-            onClick={() => handleClick(0)}
+    <>
+      <h3>{today}</h3>
+      <Card className={classes.root}>
+        <CardContent>
+          <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
           >
-            Good
-          </Button>
-          <Button
-            color={mood === 1 ? "secondary" : "primary"}
-            onClick={() => handleClick(1)}
+            Today's Mood
+          </Typography>
+          <ButtonGroup
+            variant="contained"
+            color="primary"
+            aria-label="contained primary button group"
+            className={classes.buttongroup}
           >
-            Soso
-          </Button>
-          <Button
-            color={mood === 2 ? "secondary" : "primary"}
-            onClick={() => handleClick(2)}
+            <Button
+              color={mood === 0 ? "secondary" : "primary"}
+              onClick={() => handleClick(0)}
+            >
+              Good
+            </Button>
+            <Button
+              color={mood === 1 ? "secondary" : "primary"}
+              onClick={() => handleClick(1)}
+            >
+              Soso
+            </Button>
+            <Button
+              color={mood === 2 ? "secondary" : "primary"}
+              onClick={() => handleClick(2)}
+            >
+              Angry
+            </Button>
+          </ButtonGroup>
+          <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
           >
-            Angry
+            Description
+          </Typography>
+          <TextField
+            id="outlined-multiline-static"
+            label="Text"
+            multiline
+            rows={4}
+            placeholder="Write Here"
+            variant="outlined"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </CardContent>
+        <CardActions className={classes.submit}>
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
+            Submit
           </Button>
-        </ButtonGroup>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Description
-        </Typography>
-        <TextField
-          id="outlined-multiline-static"
-          label="Text"
-          multiline
-          rows={4}
-          placeholder="Write Here"
-          variant="outlined"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </CardContent>
-      <CardActions className={classes.submit}>
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Submit
-        </Button>
-      </CardActions>
-    </Card>
+        </CardActions>
+      </Card>
+      <SimpleBottomNavigation />
+    </>
   );
 }
