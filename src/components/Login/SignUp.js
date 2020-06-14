@@ -42,7 +42,7 @@ export default function SignUp() {
 
   const registerHandler = (name, email, password) => {
     axios
-      .post("http://localhost:8080/register", { name, email, password })
+      .post("https://moodapi.fweasy.com/register", { name, email, password })
       .then((response) => {
         if (response.data.email == "duplicate") {
           console.log("duplicate exist");
