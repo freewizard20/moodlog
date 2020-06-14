@@ -42,7 +42,7 @@ export default function SignIn() {
 
   const loginHandler = (email, password) => {
     axios
-      .post("http://localhost:8080/login", { email, password })
+      .post("https://moodapi.fweasy.com/login", { email, password })
       .then((response) => {
         if (response.data.email === "passwordincorrect") {
           console.log("passwordincorrect");
