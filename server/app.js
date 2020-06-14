@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/User");
+const bcrypt = require("bcryptjs");
 
 const app = express();
 
@@ -32,28 +33,32 @@ app.use(express.static("build"));
 
 app.post("/register", (req, res) => {
   // console.log(req.body);
-  const user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-  });
-  User.find({ email: req.body.email }).then((data) => {
-    if (data.length === 0) {
-      user
-        .save()
-        .then(() => {
-          console.log("new ID saved");
-          //res.redirect("http://localhost:8080/login");
-          res.send("written to db");
-        })
-        .catch(() => {
-          console.log("db save error");
-          res.send("database write error");
-        });
-    } else {
-      console.log("duplicate address");
-      res.send({ email: "duplicate" });
-    }
+  bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.hash(req.body.password, salt, function (err, hash) {
+      const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: hash,
+      });
+      User.find({ email: req.body.email }).then((data) => {
+        if (data.length === 0) {
+          user
+            .save()
+            .then(() => {
+              console.log("new ID saved");
+              //res.redirect("http://localhost:8080/login");
+              res.send("written to db");
+            })
+            .catch(() => {
+              console.log("db save error");
+              res.send("database write error");
+            });
+        } else {
+          console.log("duplicate address");
+          res.send({ email: "duplicate" });
+        }
+      });
+    });
   });
 });
 
@@ -64,13 +69,16 @@ app.post("/login", (req, res) => {
       res.send({ isLoggedIn: false, email: "noidfound" });
     } else {
       console.log("id found");
-      if (data[0].password === req.body.password) {
-        res.send({ isLoggedIn: true, email: req.body.email });
-        // SEND IN VALUES TO REDUX, isLoggedin, email for db search and personalization
-        // then redirect
-      } else {
-        res.send({ isLoggedIn: false, email: "passwordincorrect" });
-      }
+      bcrypt.compare(req.body.password, data[0].password, function (
+        err,
+        result
+      ) {
+        if (result) {
+          res.send({ isLoggedIn: true, email: req.body.email });
+        } else {
+          res.send({ isLoggedIn: false, email: "passwordincorrect" });
+        }
+      });
     }
   });
 });
