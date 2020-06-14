@@ -61,7 +61,7 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up {name} {email} {password}
+          Sign up
         </Typography>
 
         <Grid container spacing={2}>
