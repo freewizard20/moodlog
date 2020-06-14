@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <LoginScreen />
+        {/* <LoginScreen /> */}
         <ButtonAppBar />
         <Switch>
           <Route path="/" exact component={Log} />

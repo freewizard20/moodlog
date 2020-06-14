@@ -9,6 +9,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { useDispatch } from "react-redux";
 import { logout } from "../../actions/loginActions";
 import { Link } from "react-router-dom";
+import Cookie from "universal-cookie";
+import Cookies from "universal-cookie";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -22,11 +24,32 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-
+  const cookies = new Cookie();
   const dispatch = useDispatch();
+
+  let loggedIn = false;
+  if (cookies.get("isLoggedIn") == "false") {
+    loggedIn = false;
+  } else {
+    loggedIn = true;
+  }
+
   const logoutHandler = () => {
     console.log("logout");
     dispatch(logout());
+    cookies.set("email", "", {
+      path: "/",
+      expires: new Date(2021, 12),
+    });
+    cookies.set("isLoggedIn", "false", {
+      path: "/",
+      expires: new Date(2021, 12),
+    });
+    window.location = "/signin";
+  };
+
+  const loginHandler = () => {
+    window.location = "/signin";
   };
 
   return (
@@ -42,13 +65,19 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            <Link to="/">Mood Log</Link>
+            {cookies.get("isLoggedIn") === "false"
+              ? "Mood Log"
+              : cookies.get("email")}
           </Typography>
-          <Link to="/signin">Sign In</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Button color="inherit" onClick={logoutHandler}>
-            Log out
-          </Button>
+          {loggedIn ? (
+            <Button color="inherit" onClick={logoutHandler}>
+              Log Out
+            </Button>
+          ) : (
+            <Button color="inherit" onClick={loginHandler}>
+              Log In
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </div>

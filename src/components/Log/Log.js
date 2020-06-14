@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import firebase from "../../firebase";
 import SimpleBottomNavigation from "../Nav/SimpleBottomNavigation";
+import Cookie from "universal-cookie";
 
 const db = firebase.firestore();
 
@@ -35,6 +36,9 @@ export default function Log() {
   const [mood, setMood] = useState(-1);
   const [description, setDescription] = useState("");
   const today = new Date().toDateString();
+  const cookies = new Cookie();
+
+  const email = cookies.get("email");
 
   const handleClick = (which) => {
     setMood(which);
@@ -49,7 +53,7 @@ export default function Log() {
           mood: mood,
           description: description,
           timestamp: Date.now(),
-          id: "okjinhyuk",
+          email: email,
         })
         .then(function (docRef) {
           console.log("Document written with ID: ", docRef.id);

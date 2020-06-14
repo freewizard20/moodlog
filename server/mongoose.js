@@ -48,6 +48,6 @@ mongoose.connect(
   }
 );
 
-post();
+getOne("SG");
 // getOne("Sam Hamington");
 // deleteOne();
