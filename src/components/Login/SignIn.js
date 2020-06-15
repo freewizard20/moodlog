@@ -13,6 +13,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
 import Cookie from "universal-cookie";
+import { red } from "@material-ui/core/colors";
+import "./ErrorMessage.css";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,6 +40,8 @@ export default function SignIn() {
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordIncorrect, setPasswordIncorrect] = useState(false);
+  const [noIdFound, setNoIdFound] = useState(false);
   const cookies = new Cookie();
 
   const loginHandler = (email, password) => {
@@ -45,9 +49,9 @@ export default function SignIn() {
       .post("https://moodapi.fweasy.com/login", { email, password })
       .then((response) => {
         if (response.data.email === "passwordincorrect") {
-          console.log("passwordincorrect");
+          setPasswordIncorrect(true);
         } else if (response.data.email == "noidfound") {
-          console.log("noidfound");
+          setNoIdFound(true);
         } else {
           console.log("successfully logged in");
           cookies.set("email", response.data.email, {
@@ -73,6 +77,20 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
+        {passwordIncorrect && !noIdFound ? (
+          <Typography component="h5" className="errorMessage">
+            Password Incorrect
+          </Typography>
+        ) : (
+          <></>
+        )}
+        {noIdFound ? (
+          <Typography component="h5" className="errorMessage">
+            ID Not found
+          </Typography>
+        ) : (
+          <></>
+        )}
         <TextField
           variant="outlined"
           margin="normal"

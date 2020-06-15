@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
+import "./ErrorMessage.css";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -39,13 +40,14 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [duplicateExist, setDuplicateExist] = useState(false);
 
   const registerHandler = (name, email, password) => {
     axios
       .post("https://moodapi.fweasy.com/register", { name, email, password })
       .then((response) => {
         if (response.data.email == "duplicate") {
-          console.log("duplicate exist");
+          setDuplicateExist(true);
         } else {
           console.log("successfully signed up");
           window.location = "/signin";
@@ -63,7 +65,13 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-
+        {duplicateExist ? (
+          <Typography component="h5" className="errorMessage">
+            Email is already registered
+          </Typography>
+        ) : (
+          <></>
+        )}
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
