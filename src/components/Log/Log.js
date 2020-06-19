@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -132,10 +132,10 @@ export default function Log() {
               Submit
             </Button>
           ) : (
-            <Button variant="contained" color="primary" onClick={handleSubmit}>
-              Submit
-            </Button>
-          )}
+              <Button variant="contained" color="primary" onClick={handleSubmit}>
+                Submit
+              </Button>
+            )}
         </CardActions>
       </Card>
       <SimpleBottomNavigation />

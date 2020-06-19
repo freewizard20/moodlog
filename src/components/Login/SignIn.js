@@ -13,7 +13,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
 import Cookie from "universal-cookie";
-import { red } from "@material-ui/core/colors";
 import "./ErrorMessage.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +49,7 @@ export default function SignIn() {
       .then((response) => {
         if (response.data.email === "passwordincorrect") {
           setPasswordIncorrect(true);
-        } else if (response.data.email == "noidfound") {
+        } else if (response.data.email === "noidfound") {
           setNoIdFound(true);
         } else {
           console.log("successfully logged in");
@@ -82,15 +81,15 @@ export default function SignIn() {
             Password Incorrect
           </Typography>
         ) : (
-          <></>
-        )}
+            <></>
+          )}
         {noIdFound ? (
           <Typography component="h5" className="errorMessage">
             ID Not found
           </Typography>
         ) : (
-          <></>
-        )}
+            <></>
+          )}
         <TextField
           variant="outlined"
           margin="normal"

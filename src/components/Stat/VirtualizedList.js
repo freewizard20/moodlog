@@ -31,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function renderRow(props) {
-  const { data, index, style } = props;
+  const { index, style } = props;
   //console.log(props);
   if (index < moodData.length) {
-    if (moodData[index].mood == 0) {
+    if (moodData[index].mood === 0) {
       return (
         <ListItem button style={style} key={index}>
           <ListItemAvatar>
@@ -48,7 +48,7 @@ function renderRow(props) {
           />
         </ListItem>
       );
-    } else if (moodData[index].mood == 1) {
+    } else if (moodData[index].mood === 1) {
       return (
         <ListItem button style={style} key={index}>
           <ListItemAvatar>

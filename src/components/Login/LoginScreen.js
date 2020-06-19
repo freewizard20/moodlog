@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./LoginScreen.css";
 import { useSelector, useDispatch } from "react-redux";
-import { login, logout } from "../../actions/loginActions";
+import { login } from "../../actions/loginActions";
 import Cookies from "universal-cookie";
 
 function LoginScreen() {

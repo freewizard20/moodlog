@@ -29,7 +29,7 @@ export default function ButtonAppBar() {
 
   let loggedIn = false;
   if (
-    cookies.get("isLoggedIn") == "false" ||
+    cookies.get("isLoggedIn") === "false" ||
     cookies.get("isLoggedIn") === undefined
   ) {
     loggedIn = false;
