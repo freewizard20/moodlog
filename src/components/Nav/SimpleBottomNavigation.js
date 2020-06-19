@@ -10,10 +10,7 @@ const useStyles = makeStyles({
   root: {
     width: 400,
     marginTop: 10,
-  },
-  test: {
-    color: "black",
-  },
+  }
 });
 
 export default function SimpleBottomNavigation() {
