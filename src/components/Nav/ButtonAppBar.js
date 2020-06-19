@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../actions/loginActions";
 import { Link } from "react-router-dom";
 import Cookie from "universal-cookie";
-import Cookies from "universal-cookie";
+import "./ButtonAppBar.css"
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -68,20 +68,22 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            {cookies.get("isLoggedIn") === "false" ||
-            cookies.get("isLoggedIn") === undefined
-              ? "Mood Log"
-              : cookies.get("email")}
+            <Link className="mainlink" to="/">
+              {cookies.get("isLoggedIn") === "false" ||
+                cookies.get("isLoggedIn") === undefined
+                ? "Mood Log"
+                : cookies.get("email")}
+            </Link>
           </Typography>
           {loggedIn ? (
             <Button color="inherit" onClick={logoutHandler}>
               Log Out
             </Button>
           ) : (
-            <Button color="inherit" onClick={loginHandler}>
-              Log In
-            </Button>
-          )}
+              <Button color="inherit" onClick={loginHandler}>
+                Log In
+              </Button>
+            )}
         </Toolbar>
       </AppBar>
     </div>
