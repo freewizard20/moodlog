@@ -17,7 +17,7 @@
 - universal cookies
 - axios
 - react-window
-- firbase
+- firebase
 - netlify CI/CD
 
 ### Back-end
@@ -28,6 +28,8 @@
 - Mongoose
 - Firebase FireStore
 - bcrypt
+- letsencrypt
+- certbot
 
 ## Architecture
 
