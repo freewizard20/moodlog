@@ -139,7 +139,7 @@ export default function VirtualizedList() {
       <div className={classes.root}>
         <FixedSizeList
           height={400}
-          width={300}
+          width={400}
           itemSize={90}
           itemCount={moodData.length}
         >

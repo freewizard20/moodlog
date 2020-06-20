@@ -30,10 +30,6 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
   },
-  content: {
-    display: "flex",
-    justifyContent: "center",
-  },
 });
 
 export default function Stat() {
@@ -42,7 +38,7 @@ export default function Stat() {
   return (
     <>
       <Card className={classes.root}>
-        <CardContent className={classes.content}>
+        <CardContent >
           <VirtualizedList />
         </CardContent>
       </Card>
