@@ -6,16 +6,34 @@ import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
 import allReducer from "./reducers/allReducer";
 import { Provider } from "react-redux";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      main: '#209cee',
+    },
+    secondary: {
+      // This is green.A700 as hex.
+      main: '#fe7a72',
+    },
+  },
+});
 
 const store = createStore(
   allReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+
+
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </React.StrictMode>
   </Provider>,
   document.getElementById("root")

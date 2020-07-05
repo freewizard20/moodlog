@@ -65,6 +65,7 @@ export default function ButtonAppBar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
+            style={{ color: "white" }}
           >
             <MenuIcon />
           </IconButton>
@@ -77,11 +78,11 @@ export default function ButtonAppBar() {
             </Link>
           </Typography>
           {loggedIn ? (
-            <Button color="inherit" onClick={logoutHandler}>
+            <Button style={{ color: "white" }} color="inherit" onClick={logoutHandler}>
               Log Out
             </Button>
           ) : (
-              <Button color="inherit" onClick={loginHandler}>
+              <Button style={{ color: "white" }} color="inherit" onClick={loginHandler}>
                 Log In
               </Button>
             )}

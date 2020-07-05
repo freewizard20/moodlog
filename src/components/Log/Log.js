@@ -87,18 +87,21 @@ export default function Log() {
             <Button
               color={mood === 0 ? "secondary" : "primary"}
               onClick={() => handleClick(0)}
+              style={{ color: "white" }}
             >
               Good
             </Button>
             <Button
               color={mood === 1 ? "secondary" : "primary"}
               onClick={() => handleClick(1)}
+              style={{ color: "white" }}
             >
               Soso
             </Button>
             <Button
               color={mood === 2 ? "secondary" : "primary"}
               onClick={() => handleClick(2)}
+              style={{ color: "white" }}
             >
               Angry
             </Button>
