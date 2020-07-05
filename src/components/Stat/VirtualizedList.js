@@ -39,7 +39,7 @@ function renderRow(props) {
         <ListItem button style={style} key={index}>
           <ListItemAvatar>
             <Avatar>
-              <SentimentSatisfiedAltIcon color="primary" />
+              <SentimentSatisfiedAltIcon style={{ color: "green" }} />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
@@ -67,7 +67,7 @@ function renderRow(props) {
         <ListItem button style={style} key={index}>
           <ListItemAvatar>
             <Avatar>
-              <SentimentVeryDissatisfiedIcon color="secondary" />
+              <SentimentVeryDissatisfiedIcon style={{ color: "red" }} />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
