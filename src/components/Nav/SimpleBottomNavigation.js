@@ -8,8 +8,9 @@ import MenuBookIcon from "@material-ui/icons/MenuBook";
 
 const useStyles = makeStyles({
   root: {
-    width: 400,
-    marginTop: 10,
+    position: "fixed",
+    width: "100%",
+    bottom: 0,
   }
 });
 

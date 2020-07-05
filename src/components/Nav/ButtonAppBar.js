@@ -13,7 +13,8 @@ import Cookie from "universal-cookie";
 import "./ButtonAppBar.css"
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
