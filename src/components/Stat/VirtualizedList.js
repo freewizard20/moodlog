@@ -20,9 +20,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     height: 400,
-    minwidth: 400,
+    minwidth: 450,
     maxWidth: 300,
-    marginLeft: 0,
     backgroundColor: theme.palette.background.paper,
   },
   satisfied: {

@@ -135,7 +135,7 @@ export default function Log() {
               Submit
             </Button>
           ) : (
-              <Button variant="contained" color="primary" onClick={handleSubmit}>
+              <Button style={{ color: "white" }} variant="contained" color="primary" onClick={handleSubmit}>
                 Submit
               </Button>
             )}
