@@ -20,9 +20,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     height: 400,
-    minwidth: 400,
+    minwidth: 450,
     maxWidth: 300,
-    marginLeft: 0,
     backgroundColor: theme.palette.background.paper,
   },
   satisfied: {
@@ -39,7 +38,7 @@ function renderRow(props) {
         <ListItem button style={style} key={index}>
           <ListItemAvatar>
             <Avatar>
-              <SentimentSatisfiedAltIcon color="primary" />
+              <SentimentSatisfiedAltIcon style={{ color: "green" }} />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
@@ -67,7 +66,7 @@ function renderRow(props) {
         <ListItem button style={style} key={index}>
           <ListItemAvatar>
             <Avatar>
-              <SentimentVeryDissatisfiedIcon color="secondary" />
+              <SentimentVeryDissatisfiedIcon style={{ color: "red" }} />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
