@@ -45,7 +45,7 @@ export default function SignIn() {
 
   const loginHandler = (email, password) => {
     axios
-      .post("https://moodapi.fweasy.com/login", { email, password })
+      .post("https://moodapi.freewizard.net/login", { email, password })
       .then((response) => {
         if (response.data.email === "passwordincorrect") {
           setPasswordIncorrect(true);

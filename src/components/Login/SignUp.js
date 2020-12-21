@@ -43,7 +43,7 @@ export default function SignUp() {
 
   const registerHandler = (name, email, password) => {
     axios
-      .post("https://moodapi.fweasy.com/register", { name, email, password })
+      .post("https://moodapi.freewizard.net/register", { name, email, password })
       .then((response) => {
         if (response.data.email === "duplicate") {
           setDuplicateExist(true);
