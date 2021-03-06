@@ -22,7 +22,7 @@ app.use(cors());
 app.use(express.urlencoded());
 
 // SERVE ROOT
-app.use(express.static("build"));
+// app.use(express.static("build"));
 
 // app.get("/", (req, res) => {
 //   User.find().then((data) => {
@@ -30,6 +30,11 @@ app.use(express.static("build"));
 //     res.send(data);
 //   });
 // });
+
+app.get('/',(req,res)=>{
+	res.send('Hello from moodapi');
+	console.log('/ moodapi');
+});
 
 app.post("/register", (req, res) => {
   // console.log(req.body);
@@ -83,8 +88,8 @@ app.post("/login", (req, res) => {
   });
 });
 
-const PORT = 8080;
+const PORT = 3002;
 
 app.listen(PORT, () => {
-  console.log("server listening at 8080");
+  console.log("server listening at 3002");
 });
